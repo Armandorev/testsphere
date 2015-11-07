@@ -11,10 +11,12 @@ public class PersonalInformationUtilities {
 
     private static PersonalInformationUtilities personalInformationUtilities;
 
-    private List<String> listOfNames;
+    private List<String> listOfMaleNames;
+    private List<String> listOfSurnames;
 
     private PersonalInformationUtilities() throws Exception {
-        listOfNames = Utilities.giveMeTheListOf("maleNames.properties");
+        listOfMaleNames = Utilities.giveMeTheListOf("maleNames.txt");
+        listOfSurnames = Utilities.giveMeTheListOf("surnames.txt");
     }
 
     public static PersonalInformationUtilities getPersonalInformationUtilities() throws Exception {
@@ -25,8 +27,13 @@ public class PersonalInformationUtilities {
 
     }
     public String giveMeAName() throws WrongNumberException {
-        String nameToReturn = giveMeARandomElementFromList(listOfNames);
+        String nameToReturn = giveMeARandomElementFromList(listOfMaleNames);
         System.out.println("Name for Person: "+nameToReturn);
         return nameToReturn;
+    }
+    public String giveMeASurname() throws WrongNumberException {
+        String surnameToReturn = giveMeARandomElementFromList(listOfSurnames);
+        System.out.println("Surname for Person: "+surnameToReturn);
+        return surnameToReturn;
     }
 }

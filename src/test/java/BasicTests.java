@@ -23,11 +23,18 @@ public class BasicTests {
         assertNotNull(personGenerated.getPersonalInformation());
         //assert("empty string", isEmptyOrNullString(), "");
         assertTrue("Personal Information should have a name but was empty.",personGenerated.getPersonalInformation().getName().length()>0);
+        assertTrue("Personal Information should have a surname but was empty.",personGenerated.getPersonalInformation().getSurname().length()>0);
 
     }
 
     @Test
-    public void shouldHaveAListOfNameToUse() throws Exception {
-        assertTrue("Names File should not be empty", Utilities.giveMeTheListOf("maleNames.properties").size() > 0);
+    public void shouldHaveAListOfNamesToUse() throws Exception {
+        assertTrue("Names File should not be empty", Utilities.giveMeTheListOf("maleNames.txt").size() > 0);
     }
+
+    @Test
+    public void shouldHaveAListOfSurnamesToUse() throws Exception {
+        assertTrue("Surames File should not be empty", Utilities.giveMeTheListOf("surnames.txt").size() > 0);
+    }
+
 }

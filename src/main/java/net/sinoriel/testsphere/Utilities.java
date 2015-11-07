@@ -11,14 +11,14 @@ import java.util.Properties;
 public class Utilities {
 
 
-    public static List<String> giveMeTheListOf(String propertiesFileName) throws IOException {
-        File propertiesFile;
-        propertiesFile = new File(Utilities.class.getClassLoader().getResource(propertiesFileName).getFile());
-        if (!propertiesFile.exists()) {
+    public static List<String> giveMeTheListOf(String fileName) throws IOException {
+        File file;
+        file = new File(Utilities.class.getClassLoader().getResource(fileName).getFile());
+        if (!file.exists()) {
             System.out.println("Couldnt Find File on System.");
             return new ArrayList<String>();
         }
-        BufferedReader reader = new BufferedReader(new FileReader(propertiesFile));
+        BufferedReader reader = new BufferedReader(new FileReader(file));
         List<String> results = new ArrayList<String>();
         String line = reader.readLine();
         while (line != null) {

@@ -5,17 +5,15 @@ package net.sinoriel.testsphere;
  */
 public class PersonalInformation {
     private String name;
+    private String surname;
 
     public PersonalInformation() throws Exception {
         this.name = PersonalInformationUtilities.getPersonalInformationUtilities().giveMeAName();
+        this.surname = PersonalInformationUtilities.getPersonalInformationUtilities().giveMeASurname();
     }
 
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    public String getSurname() { return surname; }
 }
