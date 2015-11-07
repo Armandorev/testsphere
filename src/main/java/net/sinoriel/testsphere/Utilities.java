@@ -45,4 +45,9 @@ public class Utilities {
         System.out.println("Giving a Random Number from 1 to "+value+ ": "+randomNumber);
         return randomNumber;
     }
+
+    public static double maximizeToOne(Double value){
+        if (value > 1D ) value = 1D;
+        return value;
+    }
 }

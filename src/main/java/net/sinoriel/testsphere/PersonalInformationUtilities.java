@@ -15,8 +15,8 @@ public class PersonalInformationUtilities {
     private List<String> listOfSurnames;
 
     private PersonalInformationUtilities() throws Exception {
-        listOfMaleNames = Utilities.giveMeTheListOf("maleNames.txt");
-        listOfSurnames = Utilities.giveMeTheListOf("surnames.txt");
+        listOfMaleNames = Utilities.giveMeTheListOf(Constants.MALE_NAMES_PROPERTIES_FILE);
+        listOfSurnames = Utilities.giveMeTheListOf(Constants.FEMALE_NAMES_PROPERTIES_FILE);
     }
 
     public static PersonalInformationUtilities getPersonalInformationUtilities() throws Exception {
@@ -35,5 +35,11 @@ public class PersonalInformationUtilities {
         String surnameToReturn = giveMeARandomElementFromList(listOfSurnames);
         System.out.println("Surname for Person: "+surnameToReturn);
         return surnameToReturn;
+    }
+
+    public String giveMeAMiddleName() throws WrongNumberException {
+        String middleNameToReturn = giveMeARandomElementFromList(listOfMaleNames);
+        System.out.println("Middle Name for Person: "+middleNameToReturn);
+        return middleNameToReturn;
     }
 }
