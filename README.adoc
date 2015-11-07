@@ -1,25 +1,25 @@
 = Test Sphere
 Armando Sanchez Medina https://github.com/Armandorev[Armandorev]
 [.lead]
-Inspired by a very interesting conference about Wiremock I found Sham, and based on Sham ( a library to generate random test data ) I have created this project to generate test data with data I am used to work with.
+Inspired by a very interesting conference about Wiremock, I found Sham, and based on Sham ( a library to generate random test data ) I have created this project to generate test data with data I am used to work with.
 
 == Person Class
 
-===Default Constructor
+=== Default Constructor
 
-====Person()
-  Generates a Person With:
-  *Personal Information class
+==== Person()
+Generates a Person With:
+* Personal Information class
 
-====Person(probability_of_having_a_middle_name)
+==== Person(probability_of_having_a_middle_name)
 probability_of_having_a_middle_name Parameter:: Double with value from 0 to 1. If the parameter is higher it will be defaulted to 1.
-  Generates a Person With:
-  *Personal Information class:
+Generates a Person With:
+* Personal Information class:
 
 == Personal Information Class (Internal)
 
-===Default Constructor
-  Contains
-  *Name
-  *Surname
-  *Middle Name
+=== Default Constructor
+Contains
+* Name
+* Surname
+* Middle Name
