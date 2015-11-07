@@ -14,7 +14,7 @@ public class PersonalInformationUtilities {
     private List<String> listOfNames;
 
     private PersonalInformationUtilities() throws Exception {
-        listOfNames = Utilities.giveMeTheListOf("names.properties");
+        listOfNames = Utilities.giveMeTheListOf("maleNames.properties");
     }
 
     public static PersonalInformationUtilities getPersonalInformationUtilities() throws Exception {

@@ -3,8 +3,6 @@ import net.sinoriel.testsphere.Utilities;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -30,6 +28,6 @@ public class BasicTests {
 
     @Test
     public void shouldHaveAListOfNameToUse() throws Exception {
-        assertTrue("Names File should not be empty", Utilities.giveMeTheListOf("names.properties").size() > 0);
+        assertTrue("Names File should not be empty", Utilities.giveMeTheListOf("maleNames.properties").size() > 0);
     }
 }
