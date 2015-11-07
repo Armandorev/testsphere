@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BasicTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2015-11-07T11:24:03" hostname="Franky.local" time="0.013">
+<testsuite name="BasicTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2015-11-07T17:12:24" hostname="Franky.local" time="0.014">
   <properties/>
-  <testcase name="shouldHaveAListOfNameToUse" classname="BasicTests" time="0.003"/>
-  <testcase name="shouldGeneratePerson" classname="BasicTests" time="0.009"/>
+  <testcase name="shouldHaveAListOfNameToUse" classname="BasicTests" time="0.002"/>
+  <testcase name="shouldGeneratePerson" classname="BasicTests" time="0.011"/>
   <testcase name="shouldGeneratePersonWithPersonalInformation" classname="BasicTests" time="0.001"/>
-  <system-out><![CDATA[Giving a Random Number from 1 to 13: 11
-Name for Person: Gillian
-Giving a Random Number from 1 to 13: 7
-Name for Person: Kieran
+  <system-out><![CDATA[Giving a Random Number from 1 to 106: 58
+Name for Person: Cooper
+Giving a Random Number from 1 to 106: 13
+Name for Person: Benjamin
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
