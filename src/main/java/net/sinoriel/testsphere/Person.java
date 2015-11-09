@@ -7,17 +7,27 @@ import net.sinoriel.testsphere.PersonalInformation;
 public class Person {
     private PersonalInformation personalInformation;
 
-    public Person() throws Exception {
-        this(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);
+    public Person(PersonBuilder builder) throws Exception {
+        this.personalInformation = builder.personalInformation;
     }
 
-    public Person(double middleNameProbability) throws Exception {
-        //Probability from 0 to 1
-        Utilities.maximizeToOne(middleNameProbability);
-        this.personalInformation = new PersonalInformation();
 
+    public static class PersonBuilder{
+        private PersonalInformation personalInformation;
+
+        public PersonBuilder() throws Exception {
+            this.personalInformation = new PersonalInformation.PersonalInformationBuilder().build();
+        }
+
+        public PersonBuilder withPersonalInformation(PersonalInformation personalIformation){
+            this.personalInformation = personalIformation;
+            return this;
+        }
+
+        public Person build() throws Exception {
+            return new Person(this);
+        }
     }
-
     public PersonalInformation getPersonalInformation() {
         return personalInformation;
     }
