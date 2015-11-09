@@ -21,7 +21,7 @@ public class PersonalInformationTests {
     public void shouldHaveAMiddleNameIfProbabilitySetTo100() throws Exception {
         Person personGenerated = new Person.PersonBuilder()
                 .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
-                                .withMiddleName(1D).build()
+                                .withMiddleName().build()
                 ).build();
         assertNotNull(personGenerated.getPersonalInformation());
         assertTrue("Personal Information should have a middle name but was empty.", personGenerated.getPersonalInformation().getMiddleName().length() > 0);
