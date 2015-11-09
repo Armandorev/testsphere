@@ -3,23 +3,43 @@ Armando Sanchez Medina https://github.com/Armandorev[Armandorev]
 [.lead]
 Inspired by a very interesting conference about Wiremock, I found Sham, and based on Sham ( a library to generate random test data ) I have created this project to generate test data with data I am used to work with.
 
+Now im using a builder strategy for creating the object. The way for building a person
 == Person Class
 
-=== Default Constructor
+=== Use samples:
 
 ==== Person()
-Generates a Person With:
-* Personal Information class
+Generate a Person with Default configuration (Receiving random name , surname and middle name with a probability of 5%).
+[source,java]
+----
+Person personGenerated = new Person.PersonBuilder().build();
+----
 
-==== Person(probability_of_having_a_middle_name)
-probability_of_having_a_middle_name Parameter:: Double with value from 0 to 1. If the parameter is higher it will be defaulted to 1.
-Generates a Person With:
-* Personal Information class:
+==== Person with middle name
+Generate a person with a probability of 100% of having a middle name
+[source,java]
+----
+Person personGenerated = new Person.PersonBuilder()
+        .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
+                        .withMiddleName().build()
+        ).build();
+----
 
-== Personal Information Class (Internal)
-
-=== Default Constructor
-Contains
-* Name
-* Surname
-* Middle Name
+Generate a person with a probability of having a middle name from 0(none) to 1(100%)
+[source,java]
+----
+//50% of having a middle name -> 0.5
+Person personGenerated = new Person.PersonBuilder()
+        .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
+                        .withMiddleName(0.5D).build()
+        ).build();
+----
+==== Person setting attributes
+Generate a person with name Armando, Middle name Sanchez and Surname Medina.
+[source,java]
+----
+Person personGenerated = new Person.PersonBuilder()
+        .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
+                        .withName("Armando").withMiddleName("Sanchez").withSurname("Medina").build()
+        ).build();
+----
