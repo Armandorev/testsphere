@@ -3,6 +3,7 @@ package net.sinoriel.testsphere;
 import java.util.List;
 
 import static net.sinoriel.testsphere.Utilities.giveMeARandomElementFromList;
+import static net.sinoriel.testsphere.Utilities.giveMeARandomNumberFrom1To;
 
 /**
  * Created by armandosanchezmedina on 06/11/2015.
@@ -41,5 +42,9 @@ public class PersonalInformationUtilities {
         String middleNameToReturn = giveMeARandomElementFromList(listOfMaleNames);
         System.out.println("Middle Name for Person: "+middleNameToReturn);
         return middleNameToReturn;
+    }
+
+    public Integer giveMeAnAge() throws WrongNumberException {
+        return giveMeARandomNumberFrom1To(Constants.DEFAULT_MAX_AGE);
     }
 }

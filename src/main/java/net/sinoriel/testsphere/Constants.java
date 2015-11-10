@@ -11,4 +11,6 @@ public class Constants {
     public static final Double DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES = 0.05D;
     public static final Double DEFAULT_PROBABILITY_FOR_DOUBLE_SURNAMES = 0.05D;
 
+    public static final Integer DEFAULT_MAX_AGE = 150;
+
 }

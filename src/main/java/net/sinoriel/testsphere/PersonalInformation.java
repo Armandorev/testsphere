@@ -1,5 +1,8 @@
 package net.sinoriel.testsphere;
 
+import static net.sinoriel.testsphere.PersonalInformationUtilities.*;
+import static net.sinoriel.testsphere.Utilities.*;
+
 /**
  * Created by armandosanchezmedina on 06/11/2015.
  */
@@ -7,11 +10,13 @@ public class PersonalInformation {
     private String name;
     private String surname;
     private String middleName;
+    private Integer age;
 
     public PersonalInformation(PersonalInformationBuilder builder){
         this.name = builder.name;
         this.surname = builder.surname;
         this.middleName = builder.middleName;
+        this.age = builder.age;
     }
 
     public String getName() {
@@ -26,15 +31,20 @@ public class PersonalInformation {
         return middleName;
     }
 
+    public Integer getAge() { return age; }
+
+
     public static class PersonalInformationBuilder {
         private String name;
         private String surname;
         private String middleName;
+        private Integer age;
 
         public PersonalInformationBuilder() throws Exception {
-            this.name = PersonalInformationUtilities.getPersonalInformationUtilities().giveMeAName();
-            this.surname = PersonalInformationUtilities.getPersonalInformationUtilities().giveMeASurname();
+            this.name = getPersonalInformationUtilities().giveMeAName();
+            this.surname = getPersonalInformationUtilities().giveMeASurname();
             this.middleName = maybeAMiddleName(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);
+            this.age = getPersonalInformationUtilities().giveMeAnAge();
         }
 
         public PersonalInformationBuilder withName(String name){
@@ -53,7 +63,7 @@ public class PersonalInformation {
         }
 
         public PersonalInformationBuilder withMiddleName() throws Exception {
-            this.middleName = PersonalInformationUtilities.getPersonalInformationUtilities().giveMeAMiddleName();
+            this.middleName = getPersonalInformationUtilities().giveMeAMiddleName();
             return this;
         }
 
@@ -61,20 +71,31 @@ public class PersonalInformation {
             this.middleName = maybeAMiddleName(probability);
             return this;
         }
+
         private String maybeAMiddleName(double probabilityOfMiddleName) throws Exception {
-            Utilities.maximizeToOne(probabilityOfMiddleName);
-            double probability = Utilities.giveMeARandomNumberFrom1To(100);
+            maximizeToOne(probabilityOfMiddleName);
+            double probability = giveMeARandomNumberFrom1To(100);
             if ((probability/100) <=  (100/probabilityOfMiddleName)){
-                return PersonalInformationUtilities.getPersonalInformationUtilities().giveMeAMiddleName();
+                return getPersonalInformationUtilities().giveMeAMiddleName();
             }else{
                 return "";
             }
         }
 
+        public PersonalInformationBuilder withDoubleSurname() throws Exception {
+            this.surname = getPersonalInformationUtilities().giveMeASurname()
+            + " " + getPersonalInformationUtilities().giveMeASurname();
+            return this;
+        }
+
+        public PersonalInformationBuilder withAge() throws Exception {
+            this.age = getPersonalInformationUtilities().giveMeAnAge();
+            return this;
+        }
+
         public PersonalInformation build(){
             return new PersonalInformation(this);
         }
-
 
     }
 }

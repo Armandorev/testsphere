@@ -18,7 +18,7 @@ public class PersonalInformationTests {
     }
 
     @Test
-    public void shouldHaveAMiddleNameIfProbabilitySetTo100() throws Exception {
+    public void shouldHaveAMiddleNameIfProbabilitySetTo1() throws Exception {
         Person personGenerated = new Person.PersonBuilder()
                 .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
                                 .withMiddleName().build()
@@ -53,4 +53,22 @@ public class PersonalInformationTests {
         ).build();
         assertEquals(personGenerated.getPersonalInformation().getMiddleName(), middleName);
     }
+
+    @Test
+    public void shouldIncludeDoubleSurnameIfProbabilitySetTo1() throws Exception {
+        Person personGenerated = new Person.PersonBuilder()
+                .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
+                                .withDoubleSurname().build()
+                ).build();
+        assertNotNull(personGenerated.getPersonalInformation());
+        assertTrue("Personal Information should have a double surname but was single.", personGenerated.getPersonalInformation().getSurname().contains(" "));
+    }
+
+    @Test
+    public void shouldIncludeAge() throws Exception {
+        Person personGenerated = new Person.PersonBuilder().build();
+        assertTrue("Personal Information should have a name but was empty.", personGenerated.getPersonalInformation().getAge() > 0);
+
+    }
+
 }
