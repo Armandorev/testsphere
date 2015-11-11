@@ -11,12 +11,15 @@ public class PersonalInformation {
     private String surname;
     private String middleName;
     private Integer age;
+    private Genders gender;
+
 
     public PersonalInformation(PersonalInformationBuilder builder){
         this.name = builder.name;
         this.surname = builder.surname;
         this.middleName = builder.middleName;
         this.age = builder.age;
+        this.gender = builder.gender;
     }
 
     public String getName() {
@@ -33,18 +36,21 @@ public class PersonalInformation {
 
     public Integer getAge() { return age; }
 
+    public Genders getGender() { return gender;}
 
     public static class PersonalInformationBuilder {
         private String name;
         private String surname;
         private String middleName;
         private Integer age;
+        private Genders gender;
 
         public PersonalInformationBuilder() throws Exception {
             this.name = getPersonalInformationUtilities().giveMeAName();
             this.surname = getPersonalInformationUtilities().giveMeASurname();
             this.middleName = maybeAMiddleName(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);
             this.age = getPersonalInformationUtilities().giveMeAnAge();
+            this.gender = getPersonalInformationUtilities().giveMeAGender();
         }
 
         public PersonalInformationBuilder withName(String name){

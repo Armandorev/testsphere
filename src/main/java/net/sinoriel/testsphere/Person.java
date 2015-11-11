@@ -11,7 +11,6 @@ public class Person {
         this.personalInformation = builder.personalInformation;
     }
 
-
     public static class PersonBuilder{
         private PersonalInformation personalInformation;
 

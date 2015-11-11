@@ -45,6 +45,23 @@ public class PersonalInformationUtilities {
     }
 
     public Integer giveMeAnAge() throws WrongNumberException {
-        return giveMeARandomNumberFrom1To(Constants.DEFAULT_MAX_AGE);
+        Integer age = giveMeARandomNumberFrom1To(Constants.DEFAULT_MAX_AGE);
+        System.out.println("Age for Person: "+ age);
+        return age;
+    }
+
+    public Genders giveMeAGender() throws WrongNumberException {
+        Integer randomNum = giveMeARandomNumberFrom1To(100);
+        Genders gender = Genders.NOTPECIFIED;
+
+        if (randomNum <= 55 ) {
+            gender = Genders.FEMALE;
+        } else {
+            gender = Genders.MALE;
+        }
+
+        System.out.println("Gender for Person: "+ gender);
+        return gender;
+
     }
 }

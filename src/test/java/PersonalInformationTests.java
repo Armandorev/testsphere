@@ -1,3 +1,4 @@
+import junit.framework.Assert;
 import net.sinoriel.testsphere.Person;
 import net.sinoriel.testsphere.PersonalInformation;
 import org.junit.Test;
@@ -69,6 +70,12 @@ public class PersonalInformationTests {
         Person personGenerated = new Person.PersonBuilder().build();
         assertTrue("Personal Information should have a name but was empty.", personGenerated.getPersonalInformation().getAge() > 0);
 
+    }
+
+    @Test
+    public void shouldIncludeGender() throws Exception {
+        Person personGenerated = new Person.PersonBuilder().build();
+        assertNotNull("Personal Information should include gender.", personGenerated.getPersonalInformation().getGender());
     }
 
 }
