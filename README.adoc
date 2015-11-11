@@ -10,9 +10,10 @@ Includes
 * Person class
 ** Personal Information
 *** Name
-*** Surname
-*** Middle Name
-*** Age
+*** Surname (default probability of double surname 5%)
+*** Middle Name (default probability 5%)
+*** Age (default from 1 to 150)
+*** Gender (default probability 55% females, 45% males)
 
 === Use samples:
 
