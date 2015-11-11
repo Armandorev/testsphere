@@ -6,13 +6,13 @@ Inspired by a very interesting conference about Wiremock, I found Sham, and base
 Now I'm using a builder strategy for creating the object. The way for building a person
 == Person Class
 Includes
+
 * Person class
 ** Personal Information
 *** Name
 *** Surname
 *** Middle Name
 *** Age
-
 
 === Use samples:
 
