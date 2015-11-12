@@ -75,12 +75,22 @@ public class PersonalInformationTests {
     }
 
     @Test
+    public void shouldIncludeSpecifiedAge() throws Exception {
+        Person personGenerated = new Person.PersonBuilder()
+                .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
+                        .withAge(35).build()).build();
+        assertTrue("Personal Information should have specified age but was"+personGenerated.getPersonalInformation().getAge(), personGenerated.getPersonalInformation().getAge() == 35);
+
+
+    }
+
+    @Test
     public void shouldReturnAnAdult() throws Exception {
         Person personGenerated = new Person.PersonBuilder()
                 .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
                         .withAge(Ages.ADULT).build()).build();
         int age = personGenerated.getPersonalInformation().getAge();
-        assertTrue("Person should be an adult",(age >= Constants.DEFAULT_AGE_ADULT_MIN && age <= Constants.DEFAULT_AGE_ADULT_MAX));
+        assertTrue("Person should be an adult", (age >= Constants.DEFAULT_AGE_ADULT_MIN && age <= Constants.DEFAULT_AGE_ADULT_MAX));
 
     }
 

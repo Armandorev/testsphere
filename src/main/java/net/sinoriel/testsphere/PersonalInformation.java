@@ -94,8 +94,10 @@ public class PersonalInformation {
             return this;
         }
 
-        public PersonalInformationBuilder withAge() throws Exception {
-            this.age = getPersonalInformationUtilities().giveMeAnAge();
+        public PersonalInformationBuilder withAge(Integer age) throws Exception {
+            if ((age > 0) && (age != null)) {
+                this.age = age;
+            }else this.age = 1;
             return this;
         }
 
@@ -112,5 +114,6 @@ public class PersonalInformation {
         public PersonalInformation build(){
             return new PersonalInformation(this);
         }
+
     }
 }
