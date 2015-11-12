@@ -45,6 +45,19 @@ public class Utilities {
         System.out.println("Giving a Random Number from 1 to "+value+ ": "+randomNumber);
         return randomNumber;
     }
+    public static int giveMeARandomNumber(Integer min,Integer max) throws WrongNumberException {
+
+        int value = max-min;
+        int randomNumber = 0;
+        if (value >0) {
+            randomNumber = (int) (Math.random() * (value-1) + 1);
+        }
+        else {
+            throw new WrongNumberException("Number not valid for generating our Testsphere Random value from "+min+" to "+max);
+        }
+        System.out.println("Giving a Random Number from "+min+" to "+max+ ": "+randomNumber);
+        return randomNumber+min;
+    }
 
     public static double maximizeToOne(Double value){
         if (value > 1D ) value = 1D;

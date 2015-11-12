@@ -1,4 +1,6 @@
 import junit.framework.Assert;
+import net.sinoriel.testsphere.Ages;
+import net.sinoriel.testsphere.Constants;
 import net.sinoriel.testsphere.Person;
 import net.sinoriel.testsphere.PersonalInformation;
 import org.junit.Test;
@@ -69,6 +71,16 @@ public class PersonalInformationTests {
     public void shouldIncludeAge() throws Exception {
         Person personGenerated = new Person.PersonBuilder().build();
         assertTrue("Personal Information should have a name but was empty.", personGenerated.getPersonalInformation().getAge() > 0);
+
+    }
+
+    @Test
+    public void shouldReturnAnAdult() throws Exception {
+        Person personGenerated = new Person.PersonBuilder()
+                .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
+                        .withAge(Ages.ADULT).build()).build();
+        int age = personGenerated.getPersonalInformation().getAge();
+        assertTrue("Person should be an adult",(age >= Constants.DEFAULT_AGE_ADULT_MIN && age <= Constants.DEFAULT_AGE_ADULT_MAX));
 
     }
 

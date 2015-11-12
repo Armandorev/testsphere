@@ -50,6 +50,11 @@ public class PersonalInformationUtilities {
         return age;
     }
 
+    public Integer giveMeAnAgeFrom(int ageMin, int ageMax) throws WrongNumberException {
+        Integer age = Utilities.giveMeARandomNumber(ageMin, ageMax);
+        return age;
+    }
+
     public Genders giveMeAGender() throws WrongNumberException {
         Integer randomNum = giveMeARandomNumberFrom1To(100);
         Genders gender = Genders.NOTPECIFIED;

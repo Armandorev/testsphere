@@ -13,4 +13,9 @@ public class Constants {
 
     public static final Integer DEFAULT_MAX_AGE = 150;
 
+    public static final Integer DEFAULT_AGE_ADULT_MAX = 65;
+    public static final Integer DEFAULT_AGE_ADULT_MIN = 18;
+
+
+
 }

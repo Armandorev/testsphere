@@ -99,9 +99,18 @@ public class PersonalInformation {
             return this;
         }
 
+        public PersonalInformationBuilder withAge(Ages age) throws WrongNumberException {
+            int calculatedAge = 1;
+            if (age == Ages.ADULT){
+                calculatedAge = Utilities.giveMeARandomNumber(Constants.DEFAULT_AGE_ADULT_MIN,
+                        Constants.DEFAULT_AGE_ADULT_MAX);
+            }
+            this.age = calculatedAge;
+            return this;
+        }
+
         public PersonalInformation build(){
             return new PersonalInformation(this);
         }
-
     }
 }
