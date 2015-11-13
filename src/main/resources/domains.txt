@@ -1,0 +1,15 @@
+mail.com
+mail.co.uk
+gmail.com
+gmail.co.uk
+mail.de
+aaa.com
+aa.com
+a.com
+test.com
+mail.it
+mail.gov
+mail.net
+thisisalongmailservernametotestlongeremails.co.uk
+
+

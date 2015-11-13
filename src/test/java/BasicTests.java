@@ -29,4 +29,9 @@ public class BasicTests {
         assertTrue("Surames File should not be empty", Utilities.giveMeTheListOf("surnames.txt").size() > 0);
     }
 
+    @Test
+    public void shouldHaveAListOfDomainsToUse() throws Exception {
+        assertTrue("Domains File should not be empty", Utilities.giveMeTheListOf("domains.txt").size() > 0);
+    }
+
 }
