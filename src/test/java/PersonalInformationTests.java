@@ -100,4 +100,16 @@ public class PersonalInformationTests {
         assertNotNull("Personal Information should include gender.", personGenerated.getPersonalInformation().getGender());
     }
 
+    @Test
+    public void shouldReturnACompleteName() throws Exception {
+        Person personGenerated = new Person.PersonBuilder().build();
+        String personGeneratedCompleteName = personGenerated.getPersonalInformation().getCompleteName();
+        String middlenametoReturn = personGenerated.getPersonalInformation().getMiddleName().length()>0?" "+personGenerated.getPersonalInformation().getMiddleName():"";
+        String personGeneratedConcatenateName = personGenerated.getPersonalInformation().getName()
+                + middlenametoReturn
+                + " "+ personGenerated.getPersonalInformation().getSurname();
+        assertTrue("Concatenated name should be valid", personGeneratedCompleteName.equals(personGeneratedConcatenateName));
+
+    }
+
 }

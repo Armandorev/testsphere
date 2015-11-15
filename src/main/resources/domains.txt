@@ -11,5 +11,3 @@ mail.it
 mail.gov
 mail.net
 thisisalongmailservernametotestlongeremails.co.uk
-
-

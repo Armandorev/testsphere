@@ -38,6 +38,11 @@ public class PersonalInformation {
 
     public Genders getGender() { return gender;}
 
+    public String getCompleteName() {
+        String middlenametoReturn = middleName.length()>0?" "+middleName:"";
+        return name+middlenametoReturn+" "+surname;
+    }
+
     public static class PersonalInformationBuilder {
         private String name;
         private String surname;
