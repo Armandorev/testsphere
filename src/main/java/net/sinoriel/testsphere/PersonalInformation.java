@@ -117,7 +117,9 @@ public class PersonalInformation {
         }
 
         public PersonalInformation build(){
-            return new PersonalInformation(this);
+            PersonalInformation personalInformation = new PersonalInformation(this);
+            DataRepository.currentPersonalInformation = personalInformation;
+            return personalInformation;
         }
 
     }

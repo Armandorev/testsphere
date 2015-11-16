@@ -28,7 +28,7 @@ public class ContactDetailsUtilities {
     }
 
     public String giveMeAnEmailByName(PersonalInformation personalInformation) throws WrongNumberException {
-        String email = personalInformation.getCompleteName()+"@"+giveMeADomain();
+        String email = (personalInformation.getCompleteName()+"@"+giveMeADomain()).replaceAll("\\s","");
         System.out.println("email for Person: "+email);
         return email;
 

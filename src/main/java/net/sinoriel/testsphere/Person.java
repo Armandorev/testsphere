@@ -19,17 +19,23 @@ public class Person {
         private ContactDetails contactDetails;
 
         public PersonBuilder() throws Exception {
+            // The default builder doesnt include now anything appart from personal Information, as it was causing other objects depending on it to be not receiving specific data
             this.personalInformation = new PersonalInformation.PersonalInformationBuilder().build();
-            this.contactDetails = new ContactDetails.ContactDetailsBuilder().build();
+            //this.contactDetails = new ContactDetails.ContactDetailsBuilder().build();
         }
 
-        public PersonBuilder withPersonalInformation(PersonalInformation personalIformation){
-            this.personalInformation = personalIformation;
+        public PersonBuilder withPersonalInformation(PersonalInformation personalInformation){
+            this.personalInformation = personalInformation;
             return this;
         }
 
         public PersonBuilder withContactDetails(ContactDetails contactDetails){
             this.contactDetails = contactDetails;
+            return this;
+        }
+
+        public PersonBuilder withContactDetails() throws Exception {
+            this.contactDetails = new ContactDetails.ContactDetailsBuilder().build();
             return this;
         }
 

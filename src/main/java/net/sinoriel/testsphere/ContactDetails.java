@@ -19,8 +19,7 @@ public class ContactDetails {
         private String email;
 
         public ContactDetailsBuilder() throws Exception {
-            PersonalInformation personalInformation = new PersonalInformation.PersonalInformationBuilder().build();
-            this.email = ContactDetailsUtilities.getContactDetailsUtilities().giveMeAnEmailByName(personalInformation);
+            this.email = ContactDetailsUtilities.getContactDetailsUtilities().giveMeAnEmailByName(DataRepository.currentPersonalInformation);
         }
 
         public ContactDetailsBuilder withEmail(String email){
