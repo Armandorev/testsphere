@@ -1,8 +1,7 @@
-import junit.framework.Assert;
-import net.sinoriel.testsphere.Ages;
-import net.sinoriel.testsphere.Constants;
-import net.sinoriel.testsphere.Person;
-import net.sinoriel.testsphere.PersonalInformation;
+import net.sinoriel.testsphere.repository.Ages;
+import net.sinoriel.testsphere.repository.Constants;
+import net.sinoriel.testsphere.classes.Person;
+import net.sinoriel.testsphere.classes.PersonalInformation;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;

@@ -1,7 +1,14 @@
-package net.sinoriel.testsphere;
+package net.sinoriel.testsphere.classes;
 
-import static net.sinoriel.testsphere.PersonalInformationUtilities.*;
-import static net.sinoriel.testsphere.Utilities.*;
+import net.sinoriel.testsphere.exceptions.WrongNumberException;
+import net.sinoriel.testsphere.repository.Ages;
+import net.sinoriel.testsphere.repository.Constants;
+import net.sinoriel.testsphere.repository.DataRepository;
+import net.sinoriel.testsphere.repository.Genders;
+import net.sinoriel.testsphere.utilities.Utilities;
+
+import static net.sinoriel.testsphere.utilities.PersonalInformationUtilities.*;
+import static net.sinoriel.testsphere.utilities.Utilities.*;
 
 /**
  * Created by armandosanchezmedina on 06/11/2015.

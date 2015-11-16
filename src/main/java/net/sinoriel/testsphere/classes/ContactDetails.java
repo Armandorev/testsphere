@@ -1,4 +1,7 @@
-package net.sinoriel.testsphere;
+package net.sinoriel.testsphere.classes;
+
+import net.sinoriel.testsphere.repository.DataRepository;
+import net.sinoriel.testsphere.utilities.ContactDetailsUtilities;
 
 /**
  * Created by armandosanchezmedina on 13/11/2015.

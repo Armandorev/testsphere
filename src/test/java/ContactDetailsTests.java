@@ -1,6 +1,6 @@
-import net.sinoriel.testsphere.ContactDetails;
-import net.sinoriel.testsphere.Person;
-import net.sinoriel.testsphere.PersonalInformation;
+import net.sinoriel.testsphere.classes.ContactDetails;
+import net.sinoriel.testsphere.classes.Person;
+import net.sinoriel.testsphere.classes.PersonalInformation;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;

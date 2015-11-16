@@ -1,9 +1,10 @@
-package net.sinoriel.testsphere;
+package net.sinoriel.testsphere.utilities;
+
+import net.sinoriel.testsphere.exceptions.WrongNumberException;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * Created by armandosanchezmedina on 06/11/2015.

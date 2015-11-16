@@ -1,4 +1,9 @@
-package net.sinoriel.testsphere;
+package net.sinoriel.testsphere.utilities;
+
+import net.sinoriel.testsphere.repository.Constants;
+import net.sinoriel.testsphere.classes.Person;
+import net.sinoriel.testsphere.classes.PersonalInformation;
+import net.sinoriel.testsphere.exceptions.WrongNumberException;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,5 +1,4 @@
-package net.sinoriel.testsphere;
-import net.sinoriel.testsphere.PersonalInformation;
+package net.sinoriel.testsphere.classes;
 
 /**
  * Created by armandosanchezmedina on 05/11/2015.

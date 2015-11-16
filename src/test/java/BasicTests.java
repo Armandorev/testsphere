@@ -1,7 +1,4 @@
-import net.sinoriel.testsphere.Person;
-import net.sinoriel.testsphere.PersonalInformation;
-import net.sinoriel.testsphere.Utilities;
-import org.hamcrest.CoreMatchers;
+import net.sinoriel.testsphere.utilities.Utilities;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

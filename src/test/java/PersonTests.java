@@ -1,4 +1,4 @@
-import net.sinoriel.testsphere.Person;
+import net.sinoriel.testsphere.classes.Person;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 

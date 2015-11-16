@@ -1,4 +1,4 @@
-package net.sinoriel.testsphere;
+package net.sinoriel.testsphere.repository;
 
 /**
  * Created by armandosanchezmedina on 11/11/2015.

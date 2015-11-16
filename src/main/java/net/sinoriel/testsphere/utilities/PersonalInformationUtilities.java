@@ -1,9 +1,13 @@
-package net.sinoriel.testsphere;
+package net.sinoriel.testsphere.utilities;
+
+import net.sinoriel.testsphere.repository.Constants;
+import net.sinoriel.testsphere.repository.Genders;
+import net.sinoriel.testsphere.exceptions.WrongNumberException;
 
 import java.util.List;
 
-import static net.sinoriel.testsphere.Utilities.giveMeARandomElementFromList;
-import static net.sinoriel.testsphere.Utilities.giveMeARandomNumberFrom1To;
+import static net.sinoriel.testsphere.utilities.Utilities.giveMeARandomElementFromList;
+import static net.sinoriel.testsphere.utilities.Utilities.giveMeARandomNumberFrom1To;
 
 /**
  * Created by armandosanchezmedina on 06/11/2015.
