@@ -3,7 +3,7 @@ Armando Sanchez Medina https://github.com/Armandorev[Armandorev]
 [.lead]
 Inspired by a very interesting conference about Wiremock, I found Sham, and based on Sham ( a library to generate random test data ) I have created this project to generate test data with data I am used to work with.
 
-Now I'm using a builder strategy for creating the object. The way for building a person
+Now I'm using a builder strategy for creating the object.
 == Person Class
 Includes
 
@@ -14,6 +14,8 @@ Includes
 *** Middle Name (default probability 5%)
 *** Age (default from 1 to 150)
 *** Gender (default probability 55% females, 45% males)
+** Contact Details
+*** Email
 
 === Use samples:
 
@@ -51,4 +53,13 @@ Person personGenerated = new Person.PersonBuilder()
         .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
                         .withName("Armando").withMiddleName("Sanchez").withSurname("Medina").build()
         ).build();
+----
+==== Person setting attributes
+Generate a person with name Armando, Sanchez as surname and email.
+[source,java]
+----
+Person personGenerated = new Person.PersonBuilder()
+        .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
+                        .withName("Armando").withSurname("Sanchez").build()
+        ).withContactDetails().build();
 ----
