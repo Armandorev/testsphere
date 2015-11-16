@@ -18,10 +18,15 @@ public class ContactDetails {
     public static class ContactDetailsBuilder {
         private String email;
 
-        public ContactDetailsBuilder(PersonalInformation personalInformation) throws Exception {
+        public ContactDetailsBuilder() throws Exception {
+            PersonalInformation personalInformation = new PersonalInformation.PersonalInformationBuilder().build();
             this.email = ContactDetailsUtilities.getContactDetailsUtilities().giveMeAnEmailByName(personalInformation);
         }
 
+        public ContactDetailsBuilder withEmail(String email){
+            this.email = email;
+            return this;
+        }
         public ContactDetails build(){
             return new ContactDetails(this);
         }

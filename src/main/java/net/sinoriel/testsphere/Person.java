@@ -5,12 +5,12 @@ import net.sinoriel.testsphere.PersonalInformation;
  * Created by armandosanchezmedina on 05/11/2015.
  */
 public class Person {
-    private static PersonalInformation personalInformation;
-    private static ContactDetails contactDetails;
+    private PersonalInformation personalInformation;
+    private ContactDetails contactDetails;
 
     public Person(PersonBuilder builder) throws Exception {
-        this.personalInformation = builder.personalInformation;
-        this.contactDetails = builder.contactDetails;
+        personalInformation = builder.personalInformation;
+        contactDetails = builder.contactDetails;
     }
 
 
@@ -20,11 +20,16 @@ public class Person {
 
         public PersonBuilder() throws Exception {
             this.personalInformation = new PersonalInformation.PersonalInformationBuilder().build();
-            this.contactDetails = new ContactDetails.ContactDetailsBuilder(this.personalInformation).build();
+            this.contactDetails = new ContactDetails.ContactDetailsBuilder().build();
         }
 
         public PersonBuilder withPersonalInformation(PersonalInformation personalIformation){
             this.personalInformation = personalIformation;
+            return this;
+        }
+
+        public PersonBuilder withContactDetails(ContactDetails contactDetails){
+            this.contactDetails = contactDetails;
             return this;
         }
 
