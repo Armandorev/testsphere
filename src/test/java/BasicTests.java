@@ -1,3 +1,4 @@
+import net.sinoriel.testsphere.repository.Constants;
 import net.sinoriel.testsphere.utilities.Utilities;
 import org.junit.Test;
 
@@ -18,17 +19,22 @@ public class BasicTests {
 
     @Test
     public void shouldHaveAListOfNamesToUse() throws Exception {
-        assertTrue("Names File should not be empty", Utilities.giveMeTheListOf("maleNames.txt").size() > 0);
+        assertTrue("Names File should not be empty", Utilities.giveMeTheListOf(Constants.MALE_NAMES_PROPERTIES_FILE).size() > 0);
     }
 
     @Test
     public void shouldHaveAListOfSurnamesToUse() throws Exception {
-        assertTrue("Surames File should not be empty", Utilities.giveMeTheListOf("surnames.txt").size() > 0);
+        assertTrue("Surames File should not be empty", Utilities.giveMeTheListOf(Constants.SURNAMES_PROPERTIES_FILE).size() > 0);
     }
 
     @Test
     public void shouldHaveAListOfDomainsToUse() throws Exception {
-        assertTrue("Domains File should not be empty", Utilities.giveMeTheListOf("domains.txt").size() > 0);
+        assertTrue("Domains File should not be empty", Utilities.giveMeTheListOf(Constants.DOMAINS_PROPERTIES_FILE).size() > 0);
+    }
+
+    @Test
+    public void shouldHaveAListOfCountries() throws Exception {
+        assertTrue("Countries File should not be empty", Utilities.giveMeTheListOfCountries().size() > 0);
     }
 
 }

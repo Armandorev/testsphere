@@ -8,6 +8,7 @@ public class Constants {
     public static final String FEMALE_NAMES_PROPERTIES_FILE = "femaleNames.txt";
     public static final String SURNAMES_PROPERTIES_FILE = "surNames.txt";
     public static final String DOMAINS_PROPERTIES_FILE = "domains.txt";
+    public static final String CONTRIES_PROPERTIES_FILE = "countries.csv";
 
     public static final Double DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES = 0.05D;
     public static final Double DEFAULT_PROBABILITY_FOR_DOUBLE_SURNAMES = 0.05D;

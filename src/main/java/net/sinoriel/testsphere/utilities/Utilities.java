@@ -1,6 +1,8 @@
 package net.sinoriel.testsphere.utilities;
 
 import net.sinoriel.testsphere.exceptions.WrongNumberException;
+import net.sinoriel.testsphere.repository.Constants;
+import net.sinoriel.testsphere.repository.Country;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -64,4 +66,28 @@ public class Utilities {
         if (value > 1D ) value = 1D;
         return value;
     }
+
+    public static List<Country> giveMeTheListOfCountries() throws IOException {
+        File file;
+        file = new File(Utilities.class.getClassLoader().getResource(Constants.CONTRIES_PROPERTIES_FILE).getFile());
+        if (!file.exists()) {
+            System.out.println("Couldnt Find File on System.");
+            return new ArrayList<Country>();
+        }
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        List<Country> results = new ArrayList<Country>();
+        String line = reader.readLine();
+        Country currentcountry = new Country();
+        while (line != null) {
+            String[] countryParts = line.split("\\;");
+            currentcountry.setName(countryParts[0]);
+            currentcountry.setTwoCharName(countryParts[1]);
+            currentcountry.setThreeCharName(countryParts[2]);
+            currentcountry.setPhonePrefix(countryParts[3]);
+            line = reader.readLine();
+            results.add(currentcountry);
+        }
+        return results;
+    }
+
 }
