@@ -1,5 +1,6 @@
 package net.sinoriel.testsphere.utilities;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import net.sinoriel.testsphere.repository.Constants;
 import net.sinoriel.testsphere.repository.Genders;
 import net.sinoriel.testsphere.exceptions.WrongNumberException;
@@ -17,11 +18,26 @@ public class PersonalInformationUtilities {
     private static PersonalInformationUtilities personalInformationUtilities;
 
     private List<String> listOfMaleNames;
+    private List<String> listOfFemaleNames;
     private List<String> listOfSurnames;
+
+
+    public List<String> getListOfSurnames() {
+        return listOfSurnames;
+    }
+
+    public List<String> getListOfFemaleNames() {
+        return listOfFemaleNames;
+    }
+
+    public List<String> getListOfMaleNames() {
+        return listOfMaleNames;
+    }
 
     private PersonalInformationUtilities() throws Exception {
         listOfMaleNames = Utilities.giveMeTheListOf(Constants.MALE_NAMES_PROPERTIES_FILE);
-        listOfSurnames = Utilities.giveMeTheListOf(Constants.FEMALE_NAMES_PROPERTIES_FILE);
+        listOfFemaleNames = Utilities.giveMeTheListOf(Constants.FEMALE_NAMES_PROPERTIES_FILE);
+        listOfSurnames = Utilities.giveMeTheListOf(Constants.SURNAMES_PROPERTIES_FILE);
     }
 
     public static PersonalInformationUtilities getPersonalInformationUtilities() throws Exception {
@@ -36,6 +52,18 @@ public class PersonalInformationUtilities {
         System.out.println("Name for Person: "+nameToReturn);
         return nameToReturn;
     }
+
+    public String giveMeAName(Genders gender) throws WrongNumberException {
+        String nameToReturn = "";
+        if (gender.equals(Genders.MALE)){
+            nameToReturn = giveMeARandomElementFromList(listOfMaleNames);
+        }else{
+            nameToReturn = giveMeARandomElementFromList(listOfFemaleNames);
+        }
+        System.out.println("Name for Person: "+nameToReturn);
+        return nameToReturn;
+    }
+
     public String giveMeASurname() throws WrongNumberException {
         String surnameToReturn = giveMeARandomElementFromList(listOfSurnames);
         System.out.println("Surname for Person: "+surnameToReturn);

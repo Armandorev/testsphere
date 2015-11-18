@@ -58,11 +58,11 @@ public class PersonalInformation {
         private Genders gender;
 
         public PersonalInformationBuilder() throws Exception {
-            this.name = getPersonalInformationUtilities().giveMeAName();
+            this.gender = getPersonalInformationUtilities().giveMeAGender();
+            this.name = getPersonalInformationUtilities().giveMeAName(this.gender);
             this.surname = getPersonalInformationUtilities().giveMeASurname();
             this.middleName = maybeAMiddleName(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);
             this.age = getPersonalInformationUtilities().giveMeAnAge();
-            this.gender = getPersonalInformationUtilities().giveMeAGender();
         }
 
         public PersonalInformationBuilder withName(String name){
@@ -120,6 +120,12 @@ public class PersonalInformation {
                         Constants.DEFAULT_AGE_ADULT_MAX);
             }
             this.age = calculatedAge;
+            return this;
+        }
+
+        public PersonalInformationBuilder withGender(Genders gender) throws Exception {
+            this.gender = gender;
+            this.name = getPersonalInformationUtilities().giveMeAName(this.gender);
             return this;
         }
 

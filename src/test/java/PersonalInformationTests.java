@@ -1,7 +1,11 @@
+import junit.framework.Assert;
 import net.sinoriel.testsphere.repository.Ages;
 import net.sinoriel.testsphere.repository.Constants;
 import net.sinoriel.testsphere.classes.Person;
 import net.sinoriel.testsphere.classes.PersonalInformation;
+import net.sinoriel.testsphere.repository.Genders;
+import net.sinoriel.testsphere.utilities.PersonalInformationUtilities;
+import net.sinoriel.testsphere.utilities.testUtilities;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -109,6 +113,14 @@ public class PersonalInformationTests {
                 + " "+ personGenerated.getPersonalInformation().getSurname();
         assertTrue("Concatenated name should be valid", personGeneratedCompleteName.equals(personGeneratedConcatenateName));
 
+    }
+
+    @Test
+    public void shouldGiveANameBasedOnGender() throws Exception {
+        Person personGenerated = new Person.PersonBuilder().build();
+        String name = personGenerated.getPersonalInformation().getName();
+        Genders gender = personGenerated.getPersonalInformation().getGender();
+        assertTrue("Name should depend on Gender", testUtilities.isNameOnGender(name, gender));
     }
 
 }

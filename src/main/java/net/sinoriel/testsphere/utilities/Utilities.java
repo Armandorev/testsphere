@@ -90,4 +90,8 @@ public class Utilities {
         return results;
     }
 
+    public static Boolean checkIfElementOnList(String element,List<String> list){
+        return list.contains(element);
+    }
+
 }
