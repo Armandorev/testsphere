@@ -5,5 +5,5 @@ package net.sinoriel.testsphere.repository;
  */
 public enum Genders {
 
-    MALE, FEMALE, NOTPECIFIED;
+    MALE, FEMALE, NOTSPECIFIED;
 }

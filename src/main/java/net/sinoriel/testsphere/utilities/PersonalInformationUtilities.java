@@ -89,7 +89,7 @@ public class PersonalInformationUtilities {
 
     public Genders giveMeAGender() throws WrongNumberException {
         Integer randomNum = giveMeARandomNumberFrom1To(100);
-        Genders gender = Genders.NOTPECIFIED;
+        Genders gender = Genders.NOTSPECIFIED;
 
         if (randomNum <= 55 ) {
             gender = Genders.FEMALE;
