@@ -1,10 +1,7 @@
 package net.sinoriel.testsphere.classes;
 
 import net.sinoriel.testsphere.exceptions.WrongNumberException;
-import net.sinoriel.testsphere.repository.Ages;
-import net.sinoriel.testsphere.repository.Constants;
-import net.sinoriel.testsphere.repository.DataRepository;
-import net.sinoriel.testsphere.repository.Genders;
+import net.sinoriel.testsphere.repository.*;
 import net.sinoriel.testsphere.utilities.Utilities;
 
 import static net.sinoriel.testsphere.utilities.PersonalInformationUtilities.*;
@@ -19,6 +16,7 @@ public class PersonalInformation {
     private String middleName;
     private Integer age;
     private Genders gender;
+    private Country nationality;
 
 
     public PersonalInformation(PersonalInformationBuilder builder){
@@ -27,6 +25,7 @@ public class PersonalInformation {
         this.middleName = builder.middleName;
         this.age = builder.age;
         this.gender = builder.gender;
+        this.nationality = builder.nationality;
     }
 
     public String getName() {
@@ -45,6 +44,14 @@ public class PersonalInformation {
 
     public Genders getGender() { return gender;}
 
+    public String getNationalityDescription() { return nationality.getName(); }
+
+    public String getNationalityWith2ISO() { return nationality.getTwoCharName(); }
+
+    public String getNationalityWith3ISO() { return nationality.getThreeCharName(); }
+
+    public String getNationalityPrefix() { return nationality.getPhonePrefix(); }
+
     public String getCompleteName() {
         String middlenametoReturn = middleName.length()>0?" "+middleName:"";
         return name+middlenametoReturn+" "+surname;
@@ -56,9 +63,11 @@ public class PersonalInformation {
         private String middleName;
         private Integer age;
         private Genders gender;
+        private Country nationality;
 
         public PersonalInformationBuilder() throws Exception {
             this.gender = getPersonalInformationUtilities().giveMeAGender();
+            this.nationality = getPersonalInformationUtilities().giveMeANationality();
             this.name = getPersonalInformationUtilities().giveMeAName(this.gender);
             this.surname = getPersonalInformationUtilities().giveMeASurname();
             this.middleName = maybeAMiddleName(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);

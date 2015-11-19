@@ -35,6 +35,9 @@ public class Utilities {
         return myList.get(giveMeARandomNumberFrom1To(myList.size()));
     }
 
+    public static Country giveMeARandomElementFromCountries(List<Country> myList) throws WrongNumberException {
+        return myList.get(giveMeARandomNumberFrom1To(myList.size()));
+    }
 
     public static int giveMeARandomNumberFrom1To(Integer value) throws WrongNumberException {
 
@@ -90,8 +93,7 @@ public class Utilities {
         return results;
     }
 
-    public static Boolean checkIfElementOnList(String element,List<String> list){
-        return list.contains(element);
+    public static Boolean checkIfElementOnList(String element, List<String> listOfElements) {
+        return listOfElements.contains(element);
     }
-
 }

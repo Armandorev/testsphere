@@ -98,6 +98,13 @@ public class PersonalInformationTests {
     }
 
     @Test
+    public void shouldHaveANationality() throws Exception {
+        Person personGenerated = new Person.PersonBuilder().build();
+        assertTrue("Personal Information should have a nationality.", personGenerated.getPersonalInformation().getNationalityDescription().length() > 0);
+
+    }
+
+    @Test
     public void shouldIncludeGender() throws Exception {
         Person personGenerated = new Person.PersonBuilder().build();
         assertNotNull("Personal Information should include gender.", personGenerated.getPersonalInformation().getGender());

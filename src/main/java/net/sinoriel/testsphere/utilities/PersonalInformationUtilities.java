@@ -2,11 +2,13 @@ package net.sinoriel.testsphere.utilities;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import net.sinoriel.testsphere.repository.Constants;
+import net.sinoriel.testsphere.repository.Country;
 import net.sinoriel.testsphere.repository.Genders;
 import net.sinoriel.testsphere.exceptions.WrongNumberException;
 
 import java.util.List;
 
+import static net.sinoriel.testsphere.utilities.Utilities.giveMeARandomElementFromCountries;
 import static net.sinoriel.testsphere.utilities.Utilities.giveMeARandomElementFromList;
 import static net.sinoriel.testsphere.utilities.Utilities.giveMeARandomNumberFrom1To;
 
@@ -20,6 +22,7 @@ public class PersonalInformationUtilities {
     private List<String> listOfMaleNames;
     private List<String> listOfFemaleNames;
     private List<String> listOfSurnames;
+    private List<Country> listOfNationalities;
 
 
     public List<String> getListOfSurnames() {
@@ -38,6 +41,7 @@ public class PersonalInformationUtilities {
         listOfMaleNames = Utilities.giveMeTheListOf(Constants.MALE_NAMES_PROPERTIES_FILE);
         listOfFemaleNames = Utilities.giveMeTheListOf(Constants.FEMALE_NAMES_PROPERTIES_FILE);
         listOfSurnames = Utilities.giveMeTheListOf(Constants.SURNAMES_PROPERTIES_FILE);
+        listOfNationalities = Utilities.giveMeTheListOfCountries();
     }
 
     public static PersonalInformationUtilities getPersonalInformationUtilities() throws Exception {
@@ -101,4 +105,11 @@ public class PersonalInformationUtilities {
         return gender;
 
     }
+
+    public Country giveMeANationality() throws WrongNumberException {
+        Country countryToReturn = giveMeARandomElementFromCountries(listOfNationalities);
+        System.out.println("Nationality for Person: "+countryToReturn);
+        return countryToReturn;
+    }
+
 }
