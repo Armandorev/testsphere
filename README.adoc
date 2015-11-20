@@ -9,18 +9,23 @@ Includes
 
 * Person class
 ** Personal Information
-*** Name
+*** Name (default generated based by the gender obtained)
 *** Surname (default probability of double surname 5%)
 *** Middle Name (default probability 5%)
 *** Age (default from 1 to 150)
 *** Gender (default probability 55% females, 45% males)
+*** Nationality
+**** Country Name
+**** Country ISO Code 2 letters
+**** Country ISO Code 3 letters
+**** Country Phone Prefix
 ** Contact Details
-*** Email
+*** Email (by default based on complete name)
 
 === Use samples:
 
 ==== Person()
-Generate a Person with Default configuration (Receiving random name , surname and middle git ciname with a probability of 5%).
+Generate a Person with Default configuration (Receiving random name , surname and middle name with a probability of 5%).
 [source,java]
 ----
 Person personGenerated = new Person.PersonBuilder().build();
@@ -62,4 +67,13 @@ Person personGenerated = new Person.PersonBuilder()
         .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
                         .withName("Armando").withSurname("Sanchez").build()
         ).withContactDetails().build();
+----
+==== Person setting nationality
+Generate a person with specific nationality.
+[source,java]
+----
+Person personGenerated = new Person.PersonBuilder()
+        .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder()
+                        .withNationalityISO2("GB").build()
+        ).build();
 ----
