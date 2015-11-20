@@ -116,6 +116,16 @@ public class PersonalInformationTests {
     }
 
     @Test
+    public void shouldHaveANationalitySpecifiedByISO3() throws Exception {
+        String nationality = "GBR";
+        Person personGenerated = new Person.PersonBuilder()
+                .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder().withNationalityISO3(nationality).build()
+                ).build();
+        assertTrue("Personal Information should have "+nationality+" nationality.", personGenerated.getPersonalInformation().getNationalityDescription().length() > 0);
+
+    }
+
+    @Test
     public void shouldIncludeGender() throws Exception {
         Person personGenerated = new Person.PersonBuilder().build();
         assertNotNull("Personal Information should include gender.", personGenerated.getPersonalInformation().getGender());

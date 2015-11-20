@@ -120,4 +120,13 @@ public class PersonalInformationUtilities {
         }
         return new Country();
     }
+
+    public static Country getCountryByISO3(String nationality) {
+        for(Country country: listOfNationalities){
+            if (country.getThreeCharName().equalsIgnoreCase(nationality)){
+                return country;
+            }
+        }
+        return new Country();
+    }
 }

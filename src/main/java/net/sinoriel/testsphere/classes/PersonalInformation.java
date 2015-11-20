@@ -144,6 +144,11 @@ public class PersonalInformation {
             return this;
         }
 
+        public PersonalInformationBuilder withNationalityISO3(String nationality){
+            this.nationality = PersonalInformationUtilities.getCountryByISO3(nationality);
+            return this;
+        }
+
         public PersonalInformation build(){
             PersonalInformation personalInformation = new PersonalInformation(this);
             DataRepository.currentPersonalInformation = personalInformation;
