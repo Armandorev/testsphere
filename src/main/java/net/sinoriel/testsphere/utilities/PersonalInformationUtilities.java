@@ -19,10 +19,10 @@ public class PersonalInformationUtilities {
 
     private static PersonalInformationUtilities personalInformationUtilities;
 
-    private List<String> listOfMaleNames;
-    private List<String> listOfFemaleNames;
-    private List<String> listOfSurnames;
-    private List<Country> listOfNationalities;
+    private static List<String> listOfMaleNames;
+    private static List<String> listOfFemaleNames;
+    private static List<String> listOfSurnames;
+    private static List<Country> listOfNationalities;
 
 
     public List<String> getListOfSurnames() {
@@ -112,4 +112,12 @@ public class PersonalInformationUtilities {
         return countryToReturn;
     }
 
+    public static Country getCountryByISO2(String nationality) {
+        for(Country country: listOfNationalities){
+            if (country.getTwoCharName().equalsIgnoreCase(nationality)){
+                return country;
+            }
+        }
+        return new Country();
+    }
 }

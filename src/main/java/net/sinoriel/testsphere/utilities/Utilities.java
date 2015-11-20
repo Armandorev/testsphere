@@ -80,8 +80,8 @@ public class Utilities {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         List<Country> results = new ArrayList<Country>();
         String line = reader.readLine();
-        Country currentcountry = new Country();
         while (line != null) {
+            Country currentcountry = new Country();
             String[] countryParts = line.split("\\;");
             currentcountry.setName(countryParts[0]);
             currentcountry.setTwoCharName(countryParts[1]);

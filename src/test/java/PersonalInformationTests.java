@@ -3,6 +3,7 @@ import net.sinoriel.testsphere.repository.Ages;
 import net.sinoriel.testsphere.repository.Constants;
 import net.sinoriel.testsphere.classes.Person;
 import net.sinoriel.testsphere.classes.PersonalInformation;
+import net.sinoriel.testsphere.repository.Country;
 import net.sinoriel.testsphere.repository.Genders;
 import net.sinoriel.testsphere.utilities.PersonalInformationUtilities;
 import net.sinoriel.testsphere.utilities.testUtilities;
@@ -101,6 +102,16 @@ public class PersonalInformationTests {
     public void shouldHaveANationality() throws Exception {
         Person personGenerated = new Person.PersonBuilder().build();
         assertTrue("Personal Information should have a nationality.", personGenerated.getPersonalInformation().getNationalityDescription().length() > 0);
+
+    }
+
+    @Test
+    public void shouldHaveANationalitySpecifiedByISO2() throws Exception {
+        String nationality = "GB";
+        Person personGenerated = new Person.PersonBuilder()
+                .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder().withNationalityISO2(nationality).build()
+                ).build();
+        assertTrue("Personal Information should have "+nationality+" nationality.", personGenerated.getPersonalInformation().getNationalityDescription().length() > 0);
 
     }
 

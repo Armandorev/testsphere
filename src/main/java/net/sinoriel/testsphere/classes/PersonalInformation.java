@@ -2,6 +2,7 @@ package net.sinoriel.testsphere.classes;
 
 import net.sinoriel.testsphere.exceptions.WrongNumberException;
 import net.sinoriel.testsphere.repository.*;
+import net.sinoriel.testsphere.utilities.PersonalInformationUtilities;
 import net.sinoriel.testsphere.utilities.Utilities;
 
 import static net.sinoriel.testsphere.utilities.PersonalInformationUtilities.*;
@@ -135,6 +136,11 @@ public class PersonalInformation {
         public PersonalInformationBuilder withGender(Genders gender) throws Exception {
             this.gender = gender;
             this.name = getPersonalInformationUtilities().giveMeAName(this.gender);
+            return this;
+        }
+
+        public PersonalInformationBuilder withNationalityISO2(String nationality){
+            this.nationality = PersonalInformationUtilities.getCountryByISO2(nationality);
             return this;
         }
 
