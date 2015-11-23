@@ -2,6 +2,8 @@ import net.sinoriel.testsphere.repository.Constants;
 import net.sinoriel.testsphere.utilities.Utilities;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 
@@ -43,5 +45,13 @@ public class BasicTests {
     }
 
     @Test
+    public void shouldHaveAListOfMaleTitles() throws IOException {
+        assertTrue("Male Titles File should not be empty", Utilities.giveMeTheListOf(Constants.MALE_TITLES_PROPERTIES_FILE).size() > 0);
+    }
+
+    @Test
+    public void shouldHaveAListOfFemaleTitles() throws IOException {
+        assertTrue("Female Titles File should not be empty", Utilities.giveMeTheListOf(Constants.FEMALE_TITLES_PROPERTIES_FILE).size() > 0);
+    }
 
 }
