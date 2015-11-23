@@ -18,8 +18,13 @@ public class BasicTests {
     }
 
     @Test
-    public void shouldHaveAListOfNamesToUse() throws Exception {
+    public void shouldHaveAListOfMaleNamesToUse() throws Exception {
         assertTrue("Names File should not be empty", Utilities.giveMeTheListOf(Constants.MALE_NAMES_PROPERTIES_FILE).size() > 0);
+    }
+
+    @Test
+    public void shouldHaveAListOfFemaleNamesToUse() throws Exception {
+        assertTrue("Names File should not be empty", Utilities.giveMeTheListOf(Constants.FEMALE_NAMES_PROPERTIES_FILE).size() > 0);
     }
 
     @Test
@@ -36,5 +41,7 @@ public class BasicTests {
     public void shouldHaveAListOfCountries() throws Exception {
         assertTrue("Countries File should not be empty", Utilities.giveMeTheListOfCountries().size() > 0);
     }
+
+    @Test
 
 }
