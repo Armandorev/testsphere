@@ -1,5 +1,7 @@
 package net.sinoriel.testsphere.classes;
 
+import static net.sinoriel.testsphere.utilities.Utilities.addValue;
+
 /**
  * Created by armandosanchezmedina on 05/11/2015.
  */
@@ -46,5 +48,6 @@ public class Person {
         return personalInformation;
     }
     public ContactDetails getContactDetails() { return contactDetails; }
+
 
 }

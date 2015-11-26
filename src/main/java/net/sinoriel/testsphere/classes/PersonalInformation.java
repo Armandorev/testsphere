@@ -18,6 +18,7 @@ public class PersonalInformation {
     private Integer age;
     private Genders gender;
     private Country nationality;
+    private Country dualNationality;
 
 
     public PersonalInformation(PersonalInformationBuilder builder){
@@ -27,6 +28,22 @@ public class PersonalInformation {
         this.age = builder.age;
         this.gender = builder.gender;
         this.nationality = builder.nationality;
+        this.dualNationality = builder.dualNationality;
+    }
+
+    protected PersonalInformation(PersonalInformation toClone){
+        this.name = toClone.name;
+        this.surname = toClone.surname;
+        this.middleName = toClone.middleName;
+        this.age = toClone.age;
+        this.gender = toClone.gender;
+        this.nationality = toClone.nationality;
+        this.dualNationality = toClone.dualNationality;
+    }
+
+    @Override
+    public PersonalInformation clone(){
+        return new PersonalInformation(this);
     }
 
     public String getName() {
@@ -53,6 +70,32 @@ public class PersonalInformation {
 
     public String getNationalityPrefix() { return nationality.getPhonePrefix(); }
 
+    public String getDualNationalityDescription() { return dualNationality.getName(); }
+
+    public String getDualNationalityWith2ISO() { return dualNationality.getTwoCharName(); }
+
+    public String getDualNationalityWith3ISO() { return dualNationality.getThreeCharName(); }
+
+    public String getDualNationalityPrefix() { return dualNationality.getPhonePrefix(); }
+
+    @Override
+    public String toString(){
+        StringBuilder personalInformation = new StringBuilder();
+        addValue(personalInformation, "Name", name);
+        addValue(personalInformation,"Surname",surname);
+        if (middleName.length() > 0) {
+            addValue(personalInformation,"MiddleName",middleName);
+        }
+        addValue(personalInformation,"Age",age.toString());
+        addValue(personalInformation,"Gender",gender.toString());
+        addValue(personalInformation,"Nationality",getNationalityDescription());
+        if (getDualNationalityDescription().length()> 0 && dualNationality!=null) {
+            addValue(personalInformation,"Dual Nationality",getDualNationalityDescription());
+        }
+        return personalInformation.toString();
+
+    }
+
     public String getCompleteName() {
         String middlenametoReturn = middleName.length()>0?" "+middleName:"";
         return name+middlenametoReturn+" "+surname;
@@ -65,13 +108,15 @@ public class PersonalInformation {
         private Integer age;
         private Genders gender;
         private Country nationality;
+        private Country dualNationality;
 
         public PersonalInformationBuilder() throws Exception {
             this.gender = getPersonalInformationUtilities().giveMeAGender();
             this.nationality = getPersonalInformationUtilities().giveMeANationality();
+            this.dualNationality = withMaybeADualNationalityAndnot(this.nationality,Constants.DEFAULT_PROBABILITY_FOR_SECOND_NATIONALITY);
             this.name = getPersonalInformationUtilities().giveMeAName(this.gender);
             this.surname = getPersonalInformationUtilities().giveMeASurname();
-            this.middleName = maybeAMiddleName(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);
+            this.middleName = withMaybeAMiddleName(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);
             this.age = getPersonalInformationUtilities().giveMeAnAge();
         }
 
@@ -96,18 +141,8 @@ public class PersonalInformation {
         }
 
         public PersonalInformationBuilder withMiddleName(double probability) throws Exception {
-            this.middleName = maybeAMiddleName(probability);
+            this.middleName = withMaybeAMiddleName(probability);
             return this;
-        }
-
-        private String maybeAMiddleName(double probabilityOfMiddleName) throws Exception {
-            maximizeToOne(probabilityOfMiddleName);
-            double probability = giveMeARandomNumberFrom1To(100);
-            if ((probability/100) <=  (100/probabilityOfMiddleName)){
-                return getPersonalInformationUtilities().giveMeAMiddleName();
-            }else{
-                return "";
-            }
         }
 
         public PersonalInformationBuilder withDoubleSurname() throws Exception {
@@ -149,11 +184,49 @@ public class PersonalInformation {
             return this;
         }
 
-        public PersonalInformation build(){
+
+        public PersonalInformationBuilder withDualNationalityISO2(String nationality){
+            this.dualNationality = PersonalInformationUtilities.getCountryByISO2(nationality);
+            return this;
+        }
+
+        public PersonalInformationBuilder withDualNationalityISO3(String nationality){
+            this.dualNationality = PersonalInformationUtilities.getCountryByISO3(nationality);
+            return this;
+        }
+
+        public PersonalInformation build() throws CloneNotSupportedException {
             PersonalInformation personalInformation = new PersonalInformation(this);
-            DataRepository.currentPersonalInformation = personalInformation;
+            DataRepository.currentPersonalInformation = personalInformation.clone();
             return personalInformation;
         }
+
+        public PersonalInformationBuilder withDualNationality(Double probability) throws Exception {
+            Country nationality = PersonalInformationUtilities.getCountryByISO2(DataRepository.currentPersonalInformation.getNationalityWith2ISO());
+            this.dualNationality = withMaybeADualNationalityAndnot(nationality, probability);
+            return this;
+        }
+
+        private String withMaybeAMiddleName(double probabilityOfMiddleName) throws Exception {
+            maximizeToOne(probabilityOfMiddleName);
+            double probability = giveMeARandomNumberFrom1To(100);
+            if ((probability/100) <=  (100/probabilityOfMiddleName)){
+                return getPersonalInformationUtilities().giveMeAMiddleName();
+            }else{
+                return "";
+            }
+        }
+
+        private Country withMaybeADualNationalityAndnot(Country nationality,double probabilityOfMiddleName) throws Exception {
+            maximizeToOne(probabilityOfMiddleName);
+            double probability = giveMeARandomNumberFrom1To(100);
+            if ((probability/100) <=  (100/probabilityOfMiddleName)){
+                return getPersonalInformationUtilities().giveMeANationalityAndNot(nationality);
+            }else{
+                return new Country();
+            }
+        }
+
 
     }
 }

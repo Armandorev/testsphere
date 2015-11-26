@@ -6,11 +6,10 @@ import net.sinoriel.testsphere.repository.Country;
 import net.sinoriel.testsphere.repository.Genders;
 import net.sinoriel.testsphere.exceptions.WrongNumberException;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static net.sinoriel.testsphere.utilities.Utilities.giveMeARandomElementFromCountries;
-import static net.sinoriel.testsphere.utilities.Utilities.giveMeARandomElementFromList;
-import static net.sinoriel.testsphere.utilities.Utilities.giveMeARandomNumberFrom1To;
+import static net.sinoriel.testsphere.utilities.Utilities.*;
 
 /**
  * Created by armandosanchezmedina on 06/11/2015.
@@ -108,8 +107,16 @@ public class PersonalInformationUtilities {
 
     public Country giveMeANationality() throws WrongNumberException {
         Country countryToReturn = giveMeARandomElementFromCountries(listOfNationalities);
-        System.out.println("Nationality for Person: "+countryToReturn);
+        System.out.println("Nationality for Person: "+countryToReturn.getName());
         return countryToReturn;
+    }
+
+    public Country giveMeANationalityAndNot(Country mainNationality) throws WrongNumberException {
+            List <Country> countriesToReturn = new ArrayList<Country>(listOfNationalities);
+            countriesToReturn.remove(mainNationality);
+            Country countryToReturn = giveMeARandomElementFromCountries(countriesToReturn);
+            System.out.println("Dual Nationality for Person: "+countryToReturn.getName());
+            return countryToReturn;
     }
 
     public static Country getCountryByISO2(String nationality) {

@@ -106,6 +106,35 @@ public class PersonalInformationTests {
     }
 
     @Test
+    public void shouldHaveADualNationalitySpecifiedByISO2() throws Exception {
+        String nationality = "GB";
+        Person personGenerated = new Person.PersonBuilder()
+                .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder().withDualNationalityISO2(nationality).build()
+                ).build();
+        assertTrue("Personal Information should have "+nationality+" dual nationality.", personGenerated.getPersonalInformation().getDualNationalityDescription().length() > 0);
+
+    }
+
+    @Test
+    public void shouldHaveADualNationalitySpecifiedByISO3() throws Exception {
+        String nationality = "GBR";
+        Person personGenerated = new Person.PersonBuilder()
+                .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder().withNationalityISO3(nationality).build()
+                ).build();
+        assertTrue("Personal Information should have "+nationality+" dual nationality.", personGenerated.getPersonalInformation().getDualNationalityDescription().length() > 0);
+
+    }
+
+    @Test
+    public void shouldHaveADualNationalityIfSpecified() throws Exception {
+        Person personGenerated = new Person.PersonBuilder()
+                .withPersonalInformation(new PersonalInformation.PersonalInformationBuilder().withDualNationality(1D).build()
+                ).build();
+        assertTrue("Personal Information should have a dual nationality.", personGenerated.getPersonalInformation().getDualNationalityDescription().length() > 0);
+
+    }
+
+    @Test
     public void shouldHaveANationalitySpecifiedByISO2() throws Exception {
         String nationality = "GB";
         Person personGenerated = new Person.PersonBuilder()
@@ -150,5 +179,15 @@ public class PersonalInformationTests {
         Genders gender = personGenerated.getPersonalInformation().getGender();
         assertTrue("Name should depend on Gender", testUtilities.isNameOnGender(name, gender));
     }
+
+    @Test
+    public void shouldReturnPersonAsAString() throws Exception {
+        Person personGenerated = new Person.PersonBuilder().build();
+        String personAsString = personGenerated.getPersonalInformation().toString();
+        assertTrue("Personal Information should return a String", personAsString.contains("Name") && personAsString.contains("Surname"));
+        System.out.println(personAsString);
+
+    }
+
 
 }

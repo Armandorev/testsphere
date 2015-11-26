@@ -96,4 +96,8 @@ public class Utilities {
     public static Boolean checkIfElementOnList(String element, List<String> listOfElements) {
         return listOfElements.contains(element);
     }
+
+    public static void addValue(StringBuilder stringBuilder, String title, String value) {
+        stringBuilder.append(title).append(": ").append(value).append(System.lineSeparator());
+    }
 }
