@@ -22,6 +22,9 @@ public class PersonalInformationUtilities {
     private static List<String> listOfFemaleNames;
     private static List<String> listOfSurnames;
     private static List<Country> listOfNationalities;
+    private static List<String> listOfMaleTitles;
+    private static List<String> listOfFemaleTitles;
+    private static List<String> listOfNeutralTitles;
 
 
     public List<String> getListOfSurnames() {
@@ -41,8 +44,22 @@ public class PersonalInformationUtilities {
         listOfFemaleNames = Utilities.giveMeTheListOf(Constants.FEMALE_NAMES_PROPERTIES_FILE);
         listOfSurnames = Utilities.giveMeTheListOf(Constants.SURNAMES_PROPERTIES_FILE);
         listOfNationalities = Utilities.giveMeTheListOfCountries();
+        listOfMaleTitles = Utilities.giveMeTheListOf(Constants.MALE_TITLES_PROPERTIES_FILE);
+        listOfFemaleTitles = Utilities.giveMeTheListOf(Constants.FEMALE_TITLES_PROPERTIES_FILE);
+        listOfNeutralTitles = Utilities.giveMeTheListOf(Constants.NEUTRAL_TITLES_PROPERTIES_FILE);
     }
 
+    public List<String> getListOfMaletitles() {
+        ArrayList<String> combinedList = new ArrayList<String>(listOfMaleTitles);
+        combinedList.addAll(listOfNeutralTitles);
+        return combinedList;
+    }
+
+    public List<String> getListOfFemaletitles() {
+        ArrayList<String> combinedList = new ArrayList<String>(listOfFemaleTitles);
+        combinedList.addAll(listOfNeutralTitles);
+        return combinedList;
+    }
     public static PersonalInformationUtilities getPersonalInformationUtilities() throws Exception {
         if (personalInformationUtilities == null){
             personalInformationUtilities = new PersonalInformationUtilities();
@@ -135,5 +152,13 @@ public class PersonalInformationUtilities {
             }
         }
         return new Country();
+    }
+
+    public String giveMeATitle(Genders gender) throws WrongNumberException {
+        if (gender.equals(Genders.MALE)){
+            return giveMeARandomElementFromList(getListOfMaletitles());
+        }else{
+            return giveMeARandomElementFromList(getListOfFemaletitles());
+        }
     }
 }

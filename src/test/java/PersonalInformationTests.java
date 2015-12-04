@@ -181,11 +181,19 @@ public class PersonalInformationTests {
     }
 
     @Test
-    public void shouldReturnPersonAsAString() throws Exception {
+    public void shouldReturnPersonalInformationAsAString() throws Exception {
         Person personGenerated = new Person.PersonBuilder().build();
         String personAsString = personGenerated.getPersonalInformation().toString();
         assertTrue("Personal Information should return a String", personAsString.contains("Name") && personAsString.contains("Surname"));
         System.out.println(personAsString);
+
+    }
+
+    @Test
+    public void shouldReturnATitle() throws Exception {
+        Person personGenerated = new Person.PersonBuilder().build();
+        String title = personGenerated.getPersonalInformation().getTitle();
+        Assert.assertTrue("Person should have a Title",title.length()>0);
 
     }
 

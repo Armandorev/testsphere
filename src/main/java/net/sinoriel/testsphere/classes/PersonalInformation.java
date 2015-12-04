@@ -19,6 +19,7 @@ public class PersonalInformation {
     private Genders gender;
     private Country nationality;
     private Country dualNationality;
+    private String title;
 
 
     public PersonalInformation(PersonalInformationBuilder builder){
@@ -29,6 +30,7 @@ public class PersonalInformation {
         this.gender = builder.gender;
         this.nationality = builder.nationality;
         this.dualNationality = builder.dualNationality;
+        this.title = builder.title;
     }
 
     protected PersonalInformation(PersonalInformation toClone){
@@ -39,6 +41,7 @@ public class PersonalInformation {
         this.gender = toClone.gender;
         this.nationality = toClone.nationality;
         this.dualNationality = toClone.dualNationality;
+        this.title = toClone.title;
     }
 
     @Override
@@ -78,9 +81,12 @@ public class PersonalInformation {
 
     public String getDualNationalityPrefix() { return dualNationality.getPhonePrefix(); }
 
+    public String getTitle() { return title;}
+
     @Override
     public String toString(){
         StringBuilder personalInformation = new StringBuilder();
+        addValue(personalInformation, "Title", title);
         addValue(personalInformation, "Name", name);
         addValue(personalInformation,"Surname",surname);
         if (middleName.length() > 0) {
@@ -109,6 +115,7 @@ public class PersonalInformation {
         private Genders gender;
         private Country nationality;
         private Country dualNationality;
+        private String title;
 
         public PersonalInformationBuilder() throws Exception {
             this.gender = getPersonalInformationUtilities().giveMeAGender();
@@ -118,6 +125,7 @@ public class PersonalInformation {
             this.surname = getPersonalInformationUtilities().giveMeASurname();
             this.middleName = withMaybeAMiddleName(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);
             this.age = getPersonalInformationUtilities().giveMeAnAge();
+            this.title = getPersonalInformationUtilities().giveMeATitle(this.gender);
         }
 
         public PersonalInformationBuilder withName(String name){
