@@ -14,4 +14,13 @@ public class testUtilities {
             return Utilities.checkIfElementOnList(name,PersonalInformationUtilities.getPersonalInformationUtilities().getListOfFemaleNames());
         }
     }
+
+    public static Boolean isTitleOnGender(String title, Genders gender) throws Exception {
+        if (gender == Genders.MALE){
+            return Utilities.checkIfElementOnList(title,PersonalInformationUtilities.getPersonalInformationUtilities().getListOfMaleTitles());
+        }
+        else{
+            return Utilities.checkIfElementOnList(title,PersonalInformationUtilities.getPersonalInformationUtilities().getListOfFemaleTitles());
+        }
+    }
 }

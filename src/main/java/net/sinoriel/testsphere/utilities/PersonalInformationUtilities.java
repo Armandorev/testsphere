@@ -1,6 +1,5 @@
 package net.sinoriel.testsphere.utilities;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import net.sinoriel.testsphere.repository.Constants;
 import net.sinoriel.testsphere.repository.Country;
 import net.sinoriel.testsphere.repository.Genders;
@@ -49,13 +48,13 @@ public class PersonalInformationUtilities {
         listOfNeutralTitles = Utilities.giveMeTheListOf(Constants.NEUTRAL_TITLES_PROPERTIES_FILE);
     }
 
-    public List<String> getListOfMaletitles() {
+    public List<String> getListOfMaleTitles() {
         ArrayList<String> combinedList = new ArrayList<String>(listOfMaleTitles);
         combinedList.addAll(listOfNeutralTitles);
         return combinedList;
     }
 
-    public List<String> getListOfFemaletitles() {
+    public List<String> getListOfFemaleTitles() {
         ArrayList<String> combinedList = new ArrayList<String>(listOfFemaleTitles);
         combinedList.addAll(listOfNeutralTitles);
         return combinedList;
@@ -156,9 +155,9 @@ public class PersonalInformationUtilities {
 
     public String giveMeATitle(Genders gender) throws WrongNumberException {
         if (gender.equals(Genders.MALE)){
-            return giveMeARandomElementFromList(getListOfMaletitles());
+            return giveMeARandomElementFromList(getListOfMaleTitles());
         }else{
-            return giveMeARandomElementFromList(getListOfFemaletitles());
+            return giveMeARandomElementFromList(getListOfFemaleTitles());
         }
     }
 }

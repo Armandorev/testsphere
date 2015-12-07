@@ -193,9 +193,16 @@ public class PersonalInformationTests {
     public void shouldReturnATitle() throws Exception {
         Person personGenerated = new Person.PersonBuilder().build();
         String title = personGenerated.getPersonalInformation().getTitle();
-        Assert.assertTrue("Person should have a Title",title.length()>0);
+        assertTrue("Person should have a Title", title.length() > 0);
 
     }
 
+    @Test
+    public void genderShouldDependOnTitle() throws Exception {
+        Person personGenerated = new Person.PersonBuilder().build();
+        String title = personGenerated.getPersonalInformation().getTitle();
+        Genders gender = personGenerated.getPersonalInformation().getGender();
+        assertTrue("Title should depend on Gender", testUtilities.isTitleOnGender(title, gender));
+    }
 
 }
