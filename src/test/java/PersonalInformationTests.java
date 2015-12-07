@@ -205,4 +205,10 @@ public class PersonalInformationTests {
         assertTrue("Title should depend on Gender", testUtilities.isTitleOnGender(title, gender));
     }
 
+    @Test
+    public void shouldHaveNationalitySpecified() throws Exception {
+        String title = "Mrs";
+        Person personGenerated = new Person.PersonBuilder().withPersonalInformation(new PersonalInformation.PersonalInformationBuilder().withTitle(title).build()).build();
+    }
+
 }

@@ -94,7 +94,7 @@ public class PersonalInformation {
         }
         addValue(personalInformation,"Age",age.toString());
         addValue(personalInformation,"Gender",gender.toString());
-        addValue(personalInformation,"Nationality",getNationalityDescription());
+        addValue(personalInformation, "Nationality", getNationalityDescription());
         if (getDualNationalityDescription().length()> 0 && dualNationality!=null) {
             addValue(personalInformation,"Dual Nationality",getDualNationalityDescription());
         }
@@ -120,10 +120,10 @@ public class PersonalInformation {
         public PersonalInformationBuilder() throws Exception {
             this.gender = getPersonalInformationUtilities().giveMeAGender();
             this.nationality = getPersonalInformationUtilities().giveMeANationality();
-            this.dualNationality = withMaybeADualNationalityAndnot(this.nationality,Constants.DEFAULT_PROBABILITY_FOR_SECOND_NATIONALITY);
+            this.dualNationality = maybeADualNationalityAndnot(this.nationality, Constants.DEFAULT_PROBABILITY_FOR_SECOND_NATIONALITY);
             this.name = getPersonalInformationUtilities().giveMeAName(this.gender);
             this.surname = getPersonalInformationUtilities().giveMeASurname();
-            this.middleName = withMaybeAMiddleName(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);
+            this.middleName = maybeAMiddleName(Constants.DEFAULT_PROBABILITY_FOR_MIDDLE_NAMES);
             this.age = getPersonalInformationUtilities().giveMeAnAge();
             this.title = getPersonalInformationUtilities().giveMeATitle(this.gender);
         }
@@ -149,7 +149,7 @@ public class PersonalInformation {
         }
 
         public PersonalInformationBuilder withMiddleName(double probability) throws Exception {
-            this.middleName = withMaybeAMiddleName(probability);
+            this.middleName = maybeAMiddleName(probability);
             return this;
         }
 
@@ -211,11 +211,16 @@ public class PersonalInformation {
 
         public PersonalInformationBuilder withDualNationality(Double probability) throws Exception {
             Country nationality = PersonalInformationUtilities.getCountryByISO2(DataRepository.currentPersonalInformation.getNationalityWith2ISO());
-            this.dualNationality = withMaybeADualNationalityAndnot(nationality, probability);
+            this.dualNationality = maybeADualNationalityAndnot(nationality, probability);
             return this;
         }
 
-        private String withMaybeAMiddleName(double probabilityOfMiddleName) throws Exception {
+        public PersonalInformationBuilder withTitle(String title){
+            this.title = title;
+            return this;
+        }
+
+        private String maybeAMiddleName(double probabilityOfMiddleName) throws Exception {
             maximizeToOne(probabilityOfMiddleName);
             double probability = giveMeARandomNumberFrom1To(100);
             if ((probability/100) <=  (100/probabilityOfMiddleName)){
@@ -225,7 +230,7 @@ public class PersonalInformation {
             }
         }
 
-        private Country withMaybeADualNationalityAndnot(Country nationality,double probabilityOfMiddleName) throws Exception {
+        private Country maybeADualNationalityAndnot(Country nationality, double probabilityOfMiddleName) throws Exception {
             maximizeToOne(probabilityOfMiddleName);
             double probability = giveMeARandomNumberFrom1To(100);
             if ((probability/100) <=  (100/probabilityOfMiddleName)){
@@ -234,7 +239,6 @@ public class PersonalInformation {
                 return new Country();
             }
         }
-
 
     }
 }
