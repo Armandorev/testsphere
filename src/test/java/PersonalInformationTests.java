@@ -207,8 +207,10 @@ public class PersonalInformationTests {
 
     @Test
     public void shouldHaveNationalitySpecified() throws Exception {
-        String title = "Mrs";
-        Person personGenerated = new Person.PersonBuilder().withPersonalInformation(new PersonalInformation.PersonalInformationBuilder().withTitle(title).build()).build();
+        String specifiedTitle = "Mrs";
+        Person personGenerated = new Person.PersonBuilder().withPersonalInformation(new PersonalInformation.PersonalInformationBuilder().withTitle(specifiedTitle).build()).build();
+        String title = personGenerated.getPersonalInformation().getTitle();
+        assertTrue("Title shoudl be the specified One",title.equalsIgnoreCase(specifiedTitle));
     }
 
 }
